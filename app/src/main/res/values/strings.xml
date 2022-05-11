@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">YourPocketStorage</string>
+    <string name="sidebar_open">Open</string>
+    <string name="sidebar_close">Close</string>
+    <string name="add_item">+ Add item</string>
+    <string name="main_layout">Main Layout</string>
+    <string name="browse_items">Browse items</string>
+    <string name="add_new_item">Add new item</string>
+    <string name="export_items">Export Items</string>
+    <string name="menu">Menu</string>
+</resources>
