@@ -27,7 +27,6 @@
             android:layout_gravity="center_vertical"
             android:text="@string/main_layout"
 
-
             android:textAlignment="center"
             android:textSize="24sp"
             tools:ignore="RtlCompat" />
@@ -36,11 +35,11 @@
             android:id="@+id/testView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello, welcome \nto my app!"
-            android:textAlignment="center"
+            android:text="Browse"
             android:layout_gravity="center"
             android:textColor="@color/teal_200"
             android:textSize="40sp" />
+
 
     </LinearLayout>
 

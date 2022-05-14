@@ -25,22 +25,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/main_layout"
-
-
+            android:text="Enter your data, please"
             android:textAlignment="center"
-            android:textSize="24sp"
-            tools:ignore="RtlCompat" />
-
-        <TextView
-            android:id="@+id/testView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello, welcome \nto my app!"
-            android:textAlignment="center"
-            android:layout_gravity="center"
             android:textColor="@color/teal_200"
-            android:textSize="40sp" />
+            android:textSize="28sp"
+            tools:ignore="RtlCompat"
+            android:padding="10dp"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="Name"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:background="@drawable/rounded_edit_text"
+            android:layout_marginTop="15dp"
+
+            >
+        </EditText>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="Amount"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:background="@drawable/rounded_edit_text"
+            android:padding="15dp"
+            android:layout_marginTop="45dp"
+            >
+        </EditText>
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:text="@string/add_item"
+            android:layout_gravity="center"
+
+            android:background="@drawable/round_button">
+
+        </Button>
+
+
 
     </LinearLayout>
 

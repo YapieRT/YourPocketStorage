@@ -3,24 +3,18 @@ package com.example.yourpocketstorage;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-
-public class MainActivity extends AppCompatActivity {
-
+public class AddActivity extends AppCompatActivity {
     private DrawerLayout SideBar;
 
     private ActionBarDrawerToggle SideBar_Toogle;
@@ -28,14 +22,10 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView SideBar_NavView;
 
     private Toolbar mToolBar;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add);
 
         SideBar = (DrawerLayout) findViewById(R.id.drawerLayout);
         mToolBar = (Toolbar) findViewById(R.id.nav_action_bar);
@@ -52,16 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
         /*---------------------------- Navigation ---------------------------- */
 
-        SideBar_NavView.bringToFront();
-
         SideBar_NavView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
     }
-
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(SideBar_Toogle.onOptionsItemSelected(item)){
             return true;
