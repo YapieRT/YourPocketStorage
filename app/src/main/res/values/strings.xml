@@ -8,4 +8,14 @@
     <string name="add_new_item">Add new item</string>
     <string name="export_items">Export Items</string>
     <string name="menu">Menu</string>
+    <string name="none">None</string>
+    <string name="sign_in">Sign In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="name">Name</string>
+    <string name="amount">Amount</string>
+    <string name="price">Price($)</string>
+    <string name="overview_last">Overview last</string>
+    <string name="clear_database">Clear Database</string>
 </resources>

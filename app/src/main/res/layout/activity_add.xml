@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity"
+    tools:context=".AddActivity"
     android:id="@+id/drawerLayout"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,23 +27,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Enter your data, please"
+            android:text="Enter your data, please:"
             android:textAlignment="center"
             android:textColor="@color/teal_200"
             android:textSize="28sp"
             tools:ignore="RtlCompat"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="30dp"/>
 
         <EditText
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:hint="Name"
+            android:hint="@string/name"
             android:textSize="16sp"
             android:textAlignment="center"
             android:background="@drawable/rounded_edit_text"
             android:layout_marginTop="15dp"
-
+            android:id="@+id/item_name"
             >
         </EditText>
 
@@ -49,12 +53,27 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:hint="Amount"
+            android:hint="@string/amount"
             android:textSize="16sp"
             android:textAlignment="center"
             android:background="@drawable/rounded_edit_text"
             android:padding="15dp"
             android:layout_marginTop="45dp"
+            android:id="@+id/item_amount"
+            >
+        </EditText>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="@string/price"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:background="@drawable/rounded_edit_text"
+            android:padding="15dp"
+            android:layout_marginTop="45dp"
+            android:id="@+id/item_price"
             >
         </EditText>
 
@@ -64,12 +83,18 @@
             android:layout_marginTop="55dp"
             android:text="@string/add_item"
             android:layout_gravity="center"
-
+            android:id="@+id/add_btn"
             android:background="@drawable/round_button">
-
         </Button>
-
-
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/overview_last"
+            android:layout_gravity="center"
+            android:id="@+id/overview_last_btn"
+            android:background="@drawable/round_button">
+        </Button>
 
     </LinearLayout>
 

@@ -12,5 +12,8 @@
         <item android:id="@+id/nav_export"
             android:icon="@mipmap/baseline_file_upload_black_18"
             android:title="@string/export_items"/>
+        <item android:id="@+id/nav_clear_database"
+            android:icon="@drawable/ic_baseline_delete_forever_18"
+            android:title="@string/clear_database"/>
     </group>
 </menu>

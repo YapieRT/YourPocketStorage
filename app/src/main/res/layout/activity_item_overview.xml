@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemOverview">
+
+    <include
+        layout="@layout/navigation_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_line">
+
+    </include>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_baseline_arrow_back_36"
+        android:id="@+id/back">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/back"
+        android:text="Item Overview"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="12dp">
+
+    </TextView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nav_line"
+        android:text="Name:"
+        android:textSize="24sp"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="35dp"
+        android:id="@+id/overview_textview_name"
+    >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nav_line"
+        android:text="@string/none"
+        android:textSize="24sp"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_toEndOf="@id/overview_textview_name"
+        android:id="@+id/overview_textview_name_none"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/overview_textview_name"
+        android:text="Amount:"
+        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        android:id="@+id/overview_textview_amount"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/overview_textview_name_none"
+        android:text="@string/none"
+        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_toEndOf="@id/overview_textview_amount"
+        android:id="@+id/overview_textview_amount_none"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/overview_textview_amount"
+        android:text="Price:"
+        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        android:id="@+id/overview_textview_price"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/overview_textview_amount_none"
+        android:text="@string/none"
+        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_toEndOf="@id/overview_textview_price"
+        android:id="@+id/overview_textview_price_none"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/overview_textview_price"
+        android:text="Data Added:"
+        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        android:id="@+id/overview_textview_date"
+        >
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/overview_textview_price_none"
+        android:text="@string/none"
+        android:textSize="24sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_toEndOf="@id/overview_textview_date"
+        android:id="@+id/overview_textview_date_none"
+        >
+    </TextView>
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="- DELETE ITEM"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:background="@drawable/round_button_red"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40sp">
+
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+
+</RelativeLayout>
