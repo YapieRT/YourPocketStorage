@@ -15,7 +15,8 @@
     <string name="login">LOGIN</string>
     <string name="name">Name</string>
     <string name="amount">Amount</string>
-    <string name="price">Price($)</string>
+    <string name="price">Price($) of each</string>
     <string name="overview_last">Overview last</string>
     <string name="clear_database">Clear Database</string>
+    <string name="id">ID</string>
 </resources>

@@ -14,32 +14,83 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <include
             layout="@layout/navigation_action_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
         </include>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/main_layout"
 
-            android:textAlignment="center"
-            android:textSize="24sp"
-            tools:ignore="RtlCompat" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/testView"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/id"
+                android:textSize="24sp"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="start">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="24sp"
+                android:layout_gravity="start"
+                android:layout_marginStart="40dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/amount"
+                android:textSize="24sp"
+                android:gravity="end"
+                android:layout_marginEnd="10dp"
+                >
+
+            </TextView>
+
+            </LinearLayout>
+
+        <View
+            android:id="@+id/view_divide_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c0c0c0"/>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:clipToPadding="false"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </ScrollView>
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Browse"
-            android:layout_gravity="center"
-            android:textColor="@color/teal_200"
-            android:textSize="40sp" />
+            android:background="@drawable/ic_baseline_refresh_24"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/refresh_view">
 
+        </ImageView>
 
     </LinearLayout>
 

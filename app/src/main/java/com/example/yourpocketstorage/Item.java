@@ -1,7 +1,9 @@
 package com.example.yourpocketstorage;
 
-public class Item {
-    public String id;
+import java.io.Serializable;
+
+public class Item implements Serializable {
+    public int id;
     public String name;
 
     public int amount;
@@ -9,7 +11,7 @@ public class Item {
 
     public String DateAdded;
 
-    public Item(String id, String name, int amount, float price,String date){
+    public Item(int id, String name, int amount, float price,String date){
         this.id = id;
         this.name = name;
         this.amount = amount;
@@ -17,7 +19,7 @@ public class Item {
         this.DateAdded = date;
     }
 
-    public String getItemID(){
+    public int getItemID(){
         return id;
     }
 
@@ -35,5 +37,9 @@ public class Item {
 
     public String getDateAdded(){
         return DateAdded;
+    }
+
+    public String ItemStroke(){
+        return "id =" + this.id + " name =" + this.name + " amount =" + this.amount + " price =" + this.price + " date =" + this.DateAdded;
     }
 }

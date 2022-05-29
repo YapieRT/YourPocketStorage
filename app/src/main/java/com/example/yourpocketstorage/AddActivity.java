@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuItem;
@@ -55,7 +57,6 @@ public class AddActivity extends AppCompatActivity {
 
     private EditText item_price;
 
-    private static long idCounter = 0;
 
     SimpleDateFormat sdf;
 
@@ -72,7 +73,7 @@ public class AddActivity extends AppCompatActivity {
 
     /*---------------------------- EditTextFilters ---------------------------- */
 
-    private final String item_amount_blockCharacterSet = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM;:'\"\\,[]{}<.>/?~#^|$%&*!()";
+    private final String item_amount_blockCharacterSet = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM;:'\"\\,[]{}<>/?~#^|$%&*!()";
 
     private final InputFilter item_amount_and_price_filter = (source, start, end, dest, dstart, dend) -> {
 
@@ -178,14 +179,16 @@ public class AddActivity extends AppCompatActivity {
 
         /*---------------------------- Add Button ---------------------------- */
 
-        item_amount.setFilters(new InputFilter[]    { item_amount_and_price_filter });
-        item_price.setFilters(new InputFilter[] { item_amount_and_price_filter });
-        item_name.setFilters(new InputFilter[] { item_name_filter });
-
+        {
+            item_amount.setFilters(new InputFilter[]{item_amount_and_price_filter});
+            item_price.setFilters(new InputFilter[]{item_amount_and_price_filter});
+            item_name.setFilters(new InputFilter[]{item_name_filter});
+        }
 
         AddButton.setOnClickListener(view -> {
             try {
                 String name = item_name.getText().toString();
+
                 int amount = Integer.parseInt(item_amount.getText().toString());
                 float price = Float.parseFloat(item_price.getText().toString());
 
@@ -200,27 +203,6 @@ public class AddActivity extends AppCompatActivity {
 
                 database.insert(DBHelper.TABLE_ITEM,null,contentValues);
 
-                Cursor cursor = database.query(DBHelper.TABLE_ITEM,null,null,null,null,null,null);
-
-                if(cursor.moveToNext()){
-                    int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-                    int nameIndex = cursor.getColumnIndex(DBHelper.KEY_NAME);
-                    int AmountIndex = cursor.getColumnIndex(DBHelper.KEY_AMOUNT);
-                    int PriceIndex = cursor.getColumnIndex(DBHelper.KEY_PRICE);
-                    int DateIndex = cursor.getColumnIndex(DBHelper.KEY_DATE);
-                        do{
-                            Log.d("mLog", "ID = " + cursor.getInt(idIndex) +
-                                    ", name = " + cursor.getString(nameIndex) +
-                                    ", amount = " + cursor.getInt(AmountIndex) +
-                                    ", price = " + cursor.getInt(PriceIndex) +
-                                    ", date = " + cursor.getString(DateIndex)
-                            );
-                        } while (cursor.moveToNext());
-
-                }else{
-                    Log.d("mLog","0 rows");
-                }
-                cursor.close();
             }
             catch (NumberFormatException ex){
                 Toast.makeText(AddActivity.this, "Wrong data!",Toast.LENGTH_SHORT).show();
@@ -233,7 +215,32 @@ public class AddActivity extends AppCompatActivity {
         OverviewLastButton = findViewById(R.id.overview_last_btn);
 
         OverviewLastButton.setOnClickListener(view -> {
-            OpenItemOverviewActivity();
+
+            Intent last_intent = new Intent(this, ItemOverview.class);
+
+            SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+            Cursor cursor = database.query(DBHelper.TABLE_ITEM,null,null,null,null,null,null);
+
+            cursor.moveToLast();
+
+            int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
+            int nameIndex = cursor.getColumnIndex(DBHelper.KEY_NAME);
+            int AmountIndex = cursor.getColumnIndex(DBHelper.KEY_AMOUNT);
+            int PriceIndex = cursor.getColumnIndex(DBHelper.KEY_PRICE);
+            int DateIndex = cursor.getColumnIndex(DBHelper.KEY_DATE);
+
+            try {
+                Item last_item = new Item(cursor.getInt(idIndex), cursor.getString(nameIndex), cursor.getInt(AmountIndex), cursor.getFloat(PriceIndex), cursor.getString(DateIndex));
+
+                last_intent.putExtra("item", last_item);
+
+                OpenItemOverviewLastActivity(last_intent);
+            }
+            catch (CursorIndexOutOfBoundsException ex) {
+                Toast.makeText(AddActivity.this, "There is no records!",Toast.LENGTH_SHORT).show();
+            }
+
         });
 
     }
@@ -264,12 +271,6 @@ public class AddActivity extends AppCompatActivity {
         return false;
     }
 
-    /*---------------------------- ID ---------------------------- */
-
-    public static synchronized String createID() {
-        return String.valueOf(idCounter++);
-    }
-
     /*---------------------------- Menu Operations ---------------------------- */
 
     public void OpenBrowseActivity(){
@@ -281,8 +282,8 @@ public class AddActivity extends AppCompatActivity {
     public void OpenExportActivity(){
         startActivity(new Intent(this, ExportActivity.class));
     }
-    public void OpenItemOverviewActivity(){
-        startActivity(new Intent(this, ItemOverview.class));
+    public void OpenItemOverviewLastActivity(Intent intent){
+        startActivity(intent);
     }
 
     public void AlertDialogClearDatabase(){
