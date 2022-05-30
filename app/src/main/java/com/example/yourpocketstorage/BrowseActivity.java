@@ -138,9 +138,6 @@ public class BrowseActivity extends AppCompatActivity {
         if (menuItem.getItemId() == R.id.nav_add_item){
             OpenAddActivity();
         }
-        if (menuItem.getItemId() == R.id.nav_export){
-            OpenExportActivity();
-        }
         if(menuItem.getItemId() == R.id.nav_clear_database){
             AlertDialogClearDatabase();
         }
@@ -153,9 +150,7 @@ public class BrowseActivity extends AppCompatActivity {
     public void OpenAddActivity(){
         startActivity(new Intent(this, AddActivity.class));
     }
-    public void OpenExportActivity(){
-        startActivity(new Intent(this, ExportActivity.class));
-    }
+
     public void OpenItemOverviewActivity(Intent intent){
         startActivity(intent);
     }

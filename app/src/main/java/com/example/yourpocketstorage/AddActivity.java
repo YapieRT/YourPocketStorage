@@ -73,25 +73,25 @@ public class AddActivity extends AppCompatActivity {
 
     /*---------------------------- EditTextFilters ---------------------------- */
 
-    private final String item_amount_blockCharacterSet = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM;:'\"\\,[]{}<>/?~#^|$%&*!()";
+        private final String item_amount_blockCharacterSet = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM;:'\"\\,[]{}<>/?~#^|$%&*!()";
 
-    private final InputFilter item_amount_and_price_filter = (source, start, end, dest, dstart, dend) -> {
+        private final InputFilter item_amount_and_price_filter = (source, start, end, dest, dstart, dend) -> {
 
-        if (source != null && item_amount_blockCharacterSet.contains(("" + source))) {
-            return "";
-        }
-        return null;
-    };
+            if (source != null && item_amount_blockCharacterSet.contains(("" + source))) {
+                return "";
+            }
+            return null;
+        };
 
-    private final String item_name_blockCharacterSet = ";:'\"\\,{}<.>/?~#^|$%&*!";
+        private final String item_name_blockCharacterSet = ";:'\"\\,{}<.>/?~#^|$%&*!";
 
-    private final InputFilter item_name_filter = (source, start, end, dest, dstart, dend) -> {
+        private final InputFilter item_name_filter = (source, start, end, dest, dstart, dend) -> {
 
-        if (source != null && item_name_blockCharacterSet.contains(("" + source))) {
-            return "";
-        }
-        return null;
-    };
+            if (source != null && item_name_blockCharacterSet.contains(("" + source))) {
+                return "";
+            }
+            return null;
+        };
 
     /*---------------------------- OnCreate ---------------------------- */
 
@@ -191,18 +191,22 @@ public class AddActivity extends AppCompatActivity {
 
                 int amount = Integer.parseInt(item_amount.getText().toString());
                 float price = Float.parseFloat(item_price.getText().toString());
+                if(amount > 0 && price > 0 && name != null) {
 
-                SQLiteDatabase database = dbHelper.getWritableDatabase();
+                    SQLiteDatabase database = dbHelper.getWritableDatabase();
 
-                ContentValues contentValues = new ContentValues();
+                    ContentValues contentValues = new ContentValues();
 
-                contentValues.put(DBHelper.KEY_NAME,name);
-                contentValues.put(DBHelper.KEY_AMOUNT,amount);
-                contentValues.put(DBHelper.KEY_PRICE,price);
-                contentValues.put(DBHelper.KEY_DATE,sdf.format(new Date()));
+                    contentValues.put(DBHelper.KEY_NAME, name);
+                    contentValues.put(DBHelper.KEY_AMOUNT, amount);
+                    contentValues.put(DBHelper.KEY_PRICE, price);
+                    contentValues.put(DBHelper.KEY_DATE, sdf.format(new Date()));
 
-                database.insert(DBHelper.TABLE_ITEM,null,contentValues);
-
+                    database.insert(DBHelper.TABLE_ITEM, null, contentValues);
+                }
+                else{
+                    Toast.makeText(AddActivity.this, "Wrong data!",Toast.LENGTH_SHORT).show();
+                }
             }
             catch (NumberFormatException ex){
                 Toast.makeText(AddActivity.this, "Wrong data!",Toast.LENGTH_SHORT).show();
@@ -262,9 +266,6 @@ public class AddActivity extends AppCompatActivity {
         if (menuItem.getItemId() == R.id.nav_add_item){
             OpenAddActivity();
         }
-        if (menuItem.getItemId() == R.id.nav_export){
-            OpenExportActivity();
-        }
         if(menuItem.getItemId() == R.id.nav_clear_database){
             AlertDialogClearDatabase();
         }
@@ -279,13 +280,9 @@ public class AddActivity extends AppCompatActivity {
     public void OpenAddActivity(){
         startActivity(new Intent(this, AddActivity.class));
     }
-    public void OpenExportActivity(){
-        startActivity(new Intent(this, ExportActivity.class));
-    }
     public void OpenItemOverviewLastActivity(Intent intent){
         startActivity(intent);
     }
-
     public void AlertDialogClearDatabase(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);

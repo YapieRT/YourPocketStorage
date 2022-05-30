@@ -12,9 +12,7 @@
         <activity
             android:name=".ItemOverview"
             android:exported="false" />
-        <activity
-            android:name=".ExportActivity"
-            android:exported="false" />
+
         <activity
             android:name=".AddActivity"
             android:exported="false" />
